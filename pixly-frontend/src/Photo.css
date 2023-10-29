@@ -1,0 +1,11 @@
+.Photo{
+  max-width: 300px;
+  max-height: auto;
+  margin: 1rem;
+}
+
+.Photo-img{
+  max-width: 200px;
+  max-height: auto;
+  margin: 1rem
+}
