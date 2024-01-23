@@ -9,7 +9,7 @@ from tempfile import NamedTemporaryFile
 load_dotenv()
 
 EXPIRES_IN_6_DAYS = 518400
-PIXLEY_BUCKET = 'r33-grace-steve-pixly'
+PIXLEY_BUCKET = 'pix.lyimages'
 SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 PUBLIC_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
 
