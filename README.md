@@ -10,3 +10,14 @@
 - This application currently has not tests.
 
 ## Instructions:
+- Clone the repository
+- connect your S3 bucket to the backend with an AWS access key and secret key. Keep these in a .env file
+- run the front-end with:
+    install the dependencies with `npm install`
+    then `npm start`
+- run the back-end with:
+    create your virtual environment with `python3 -m venv venv`
+    activate the virtual environment with `venv source bin activate`
+    install the dependencies with `pip3 install -r requirements.txt`
+    run server with `flask run`
+-
