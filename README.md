@@ -16,10 +16,13 @@
     * install the dependencies with `npm install`
     * then `npm start`
 - run the back-end with:
-    * create your virtual environment with `python3 -m venv venv`
-    * activate the virtual environment with `source venv/bin/activate`
-    * install the dependencies with `pip3 install -r requirements.txt`
-    * run server with `flask run`, if port is in use `flask run -p (port number)`
+    * create your virtual environment: `python3 -m venv venv`
+    * activate the virtual environment: `source venv/bin/activate`
+    * install the dependencies: `pip3 install -r requirements.txt`
+    * create a PostgreSQL database: `createdb pixley`
+        * create a table for each model in ipython with `%run app.py` then `db.create_all()`
+    * run server:`flask run`
+        * if port is in use `flask run -p (port number)`
     * create an AWS S3 bucket and .env file.
         * in the .env file add your AWS access key and secret key to these named variable
 
@@ -29,3 +32,5 @@
                 AWS_SECRET_ACCESS_KEY =
                 ```
     * !!!!! Rememeber to include your .env file in a .gitingore file if sharing this repository to github !!!!!
+
+## Demo:
