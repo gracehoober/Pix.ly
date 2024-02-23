@@ -31,6 +31,7 @@
                 AWS_ACCESS_KEY =
                 AWS_SECRET_ACCESS_KEY =
                 ```
+        * in utils.py change the relevant variable to fit the specifications of you S3 bucket.
     * !!!!! Rememeber to include your .env file in a .gitingore file if sharing this repository to github !!!!!
 
 ## Demo:
