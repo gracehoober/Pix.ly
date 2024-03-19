@@ -1,3 +1,4 @@
+import "./AddPhotoForm.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -46,6 +47,15 @@ function AddPhotoForm({ uploadPhoto }) {
         required
       >
       </input>
+      <label htmlFor="photo_description"></label>
+      <input
+        id="photo_description"
+        name="photo_description"
+        type="text"
+        placeholder="Your photo description here..."
+        value={formData}
+        onChange={handleChange}
+      ></input>
       <button className="AddPhotoForm-submit-btn">Submit Photo</button>
     </form>
   );
