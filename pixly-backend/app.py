@@ -21,10 +21,12 @@ connect_db(app)
 
 @app.post('/photos/add')
 def add_photo():
-    """Adds a photo"""
+    """Adds a photo."""
 
     try:
+        # TODO: integrate new front end form with back end API
         photo = request.files["user_photo"]
+        photo_description = request.form.get("user_description")
 
         photo_exif_dict = get_exif_data(photo)
         photo_key = upload_to_s3(photo)
@@ -32,10 +34,10 @@ def add_photo():
 
         new_photo_entry = Photo(url=photo_url,
                                 s3_key=photo_key,
+                                image_description=photo_description, #TODO: change naming for consistancy
                                 gps_info=photo_exif_dict["gps_info"],
                                 camera_model=photo_exif_dict["camera_model"],
                                 camera_make=photo_exif_dict["camera_make"],
-                                image_description=photo_exif_dict["image_description"],
                                 date=photo_exif_dict["date"])
         db.session.add(new_photo_entry)
         db.session.commit()
