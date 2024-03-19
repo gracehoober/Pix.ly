@@ -9,7 +9,7 @@ from tempfile import NamedTemporaryFile
 load_dotenv()
 
 EXPIRES_IN_6_DAYS = 518400
-PIXLEY_BUCKET = 'pix.lyimages'
+PIXLEY_BUCKET = 'pix.lyphotos'
 SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 PUBLIC_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
 
@@ -20,33 +20,8 @@ s3 = boto3.client(
     aws_secret_access_key=SECRET_ACCESS_KEY,
 )
 
-def create_presigned_url(key):
-    """Creates presigned URL for object in s3 bucket"""
 
-    presigned_url = s3.generate_presigned_url(
-        ClientMethod="get_object",
-        Params={
-            "Bucket": PIXLEY_BUCKET,
-            "Key": key
-        },
-        ExpiresIn=EXPIRES_IN_6_DAYS
-    )
-
-    return presigned_url
-
-
-def upload_to_s3(image_file):
-    """Uploads an image to S3 storage"""
-
-    new_key = str(uuid4())
-
-    image_uploaded_success = s3.upload_fileobj(
-        image_file,
-        PIXLEY_BUCKET,
-        new_key,
-        ExtraArgs={'ContentType': 'image/jpeg'})
-    print(image_uploaded_success, "UPLOAD TO S3")
-    return new_key
+#################### Photo storage ######################
 
 
 def get_exif_data(image_file):
@@ -80,6 +55,35 @@ def get_exif_data(image_file):
     return image_exif_dict
 
 
+def upload_to_s3(image_file):
+    """Uploads an image to S3 storage"""
+
+    new_key = str(uuid4())
+
+    image_uploaded_success = s3.upload_fileobj(
+        image_file,
+        PIXLEY_BUCKET,
+        new_key,
+        ExtraArgs={'ContentType': 'image/jpeg'})
+    print(image_uploaded_success, "UPLOAD TO S3")
+    return new_key
+
+def create_presigned_url(key):
+    """Creates presigned URL for object in s3 bucket"""
+
+    presigned_url = s3.generate_presigned_url(
+        ClientMethod="get_object",
+        Params={
+            "Bucket": PIXLEY_BUCKET,
+            "Key": key
+        },
+        ExpiresIn=EXPIRES_IN_6_DAYS
+    )
+
+    return presigned_url
+
+
+#################### Photo Editing ######################
 def black_white_photo(key):
     """Changes photo based on key to grayscale."""
 
