@@ -31,7 +31,8 @@ class PixlyApi {
   //Uploads a .jpg image file to the back end.
   static async uploadImage(photo) {
     const formData = new FormData();
-    formData.append('user_photo', photo);
+    formData.append('user_photo', photo.photoFile);
+    formData.append('user_description', photo.photoDescription)
     const res = await fetch(`${BASE_URL}/photos/add`, {
       method: 'POST',
       body: formData,

@@ -37,8 +37,8 @@ function App() {
 
   //Handles photo uploading from AddPhotoForm
   async function uploadPhoto(formData) {
-    const img = formData;
-    const response = await PixlyApi.uploadImage(img);
+    // const img = formData; removed this line of code
+    const response = await PixlyApi.uploadImage(formData);
     const newPhoto = await response.json();
     setPhotoList([...photoList, newPhoto]);
   }
