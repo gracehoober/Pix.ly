@@ -19,7 +19,6 @@ s3 = boto3.client(
     aws_access_key_id=PUBLIC_ACCESS_KEY,
     aws_secret_access_key=SECRET_ACCESS_KEY,
 )
-# Problem with access keys??
 
 def create_presigned_url(key):
     """Creates presigned URL for object in s3 bucket"""
@@ -40,8 +39,6 @@ def upload_to_s3(image_file):
     """Uploads an image to S3 storage"""
 
     new_key = str(uuid4())
-    # print(new_key, "NEW KEY!!!!!!!!!!!!!!!")
-    # TODO: Problem to uploading to S3
 
     image_uploaded_success = s3.upload_fileobj(
         image_file,
