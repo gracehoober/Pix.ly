@@ -25,7 +25,9 @@ s3 = boto3.client(
 
 
 def get_exif_data(image_file):
-    """Retrieves EXIF data from an image file, returns a dict of EXIF data."""
+    """Retrieves EXIF data from an image file, returns a dict of EXIF data.
+    >>> get_exif_data("./static/images/Ricoh_Caplio_RR330.jpg")
+    """
 
     image_exif_dict = {
         "gps_info": None,
@@ -65,7 +67,9 @@ def upload_to_s3(image_file):
         PIXLEY_BUCKET,
         new_key,
         ExtraArgs={'ContentType': 'image/jpeg'})
-    print(image_uploaded_success, "UPLOAD TO S3")
+    # TODO: remove this print statement, consider refactoring
+
+    print(image_uploaded_success, "UPLOADED TO S3")
     return new_key
 
 def create_presigned_url(key):
