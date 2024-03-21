@@ -15,6 +15,7 @@ function SearchForm({ searchPhoto }) {
 
   //Called to handle form submission.
   async function handleSubmit(evt) {
+
     evt.preventDefault();
     try {
       await searchPhoto(formData);

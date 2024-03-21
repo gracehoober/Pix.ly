@@ -1,3 +1,4 @@
+import "./AddPhotoForm.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,10 +18,13 @@ function AddPhotoForm({ uploadPhoto }) {
 
   function handleChange(evt) {
     setFormData(evt.target.files[0]);
+    console.log("got here 1");
   }
 
   async function handleSubmit(evt) {
     evt.preventDefault();
+    console.log("got here 2");
+
     if (formData) {
       try {
         await uploadPhoto(formData);
@@ -33,22 +37,36 @@ function AddPhotoForm({ uploadPhoto }) {
       alert("You must attach a .jpg file");
     }
   }
+
+  function testClick(evt) {
+    evt.preventDefault();
+    console.log("got here 4");
+  }
+
   return (
-    <form className="AddPhotoForm" onSubmit={handleSubmit}>
-      <label htmlFor="photo"></label>
-      <input
-        id="photo"
-        name="user_photo"
-        type="file"
-        accept=".jpg"
-        files={formData}
-        onChange={handleChange}
-        required
-      >
-      </input>
-      <button className="AddPhotoForm-submit-btn">Submit Photo</button>
-    </form>
+    <>
+      <form className="AddPhotoForm" onSubmit={handleSubmit}>
+        <label htmlFor="photo" className="stupidLabel">
+        </label>
+
+        <input
+          id="photo"
+          name="user_photo"
+          type="file"
+          accept=".jpg"
+          files={formData}
+          onChange={handleChange}
+          required
+          className="stupidInput"
+
+        >
+        </input>
+        <button className="AddPhotoForm-submit-btn">Submit Photo</button>
+      </form>
+    </>
   );
 }
 
 export default AddPhotoForm;
+
+{/* <div onClick={testClick}>DIV</div> */}

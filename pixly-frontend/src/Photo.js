@@ -10,14 +10,17 @@ import "./Photo.css";
  *
  *  App -> RoutesList -> PhotoList -> Photo
  */
-function Photo({photo}){
+function Photo({ photo }) {
   return (
-    <Link to={`/photos/${photo.id}`}>
-    <div className="Photo">
-      <img className="Photo-img" src={photo.url}></img>
-    </div>
-    </Link>
-  )
+    <>
+      <Link to={`/photos/${photo.id}`}>
+        <div className="Photo">
+          <img className="Photo-img" src={photo.url}></img>
+        </div>
+
+      </Link>
+    </>
+  );
 }
 
 export default Photo;
