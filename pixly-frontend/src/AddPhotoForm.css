@@ -1,10 +1,17 @@
-.stupidLabel {
-  border: red 4px solid;
+.AddPhotoForm{
+  display: flex;
+  justify-content: center;
+  margin: 4rem;
+}
 
+.photoLabel{
 
 }
 
-.stupidInput {
-  border: blue 4px solid;
+.photoForm{
 
+}
+
+.AddPhotoForm-submit-btn{
+  font-family: 
 }

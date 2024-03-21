@@ -46,7 +46,7 @@ function AddPhotoForm({ uploadPhoto }) {
   return (
     <>
       <form className="AddPhotoForm" onSubmit={handleSubmit}>
-        <label htmlFor="photo" className="stupidLabel">
+        <label htmlFor="photo" className="photoLabel">
         </label>
 
         <input
@@ -57,7 +57,7 @@ function AddPhotoForm({ uploadPhoto }) {
           files={formData}
           onChange={handleChange}
           required
-          className="stupidInput"
+          className="photoInput"
 
         >
         </input>
@@ -69,4 +69,3 @@ function AddPhotoForm({ uploadPhoto }) {
 
 export default AddPhotoForm;
 
-{/* <div onClick={testClick}>DIV</div> */}
