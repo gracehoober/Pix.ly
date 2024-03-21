@@ -29,15 +29,9 @@ class PixlyApi {
   }
 
   //Uploads a .jpg image file to the back end.
-  // Like: {user_photo, user_description}
-
-  //TODO: make this JSON for consistency
   static async uploadImage(photo) {
     const formData = new FormData();
-    const { photoFile, photoDescription } = photo;
-
-    formData.append('user_photo', photoFile);
-    formData.append('user_description', photoDescription);
+    formData.append('user_photo', photo);
     const res = await fetch(`${BASE_URL}/photos/add`, {
       method: 'POST',
       body: formData,
@@ -63,9 +57,9 @@ class PixlyApi {
 
   //Transforms an image into a grayscale version on the back end.
   //NOTE: not currently reversible.
-  static async grayscaleImage(id) {
-    const data = JSON.stringify({ command: "blackwhite" });
-    const res = await fetch(`${BASE_URL}/photos/${id}`, {
+  static async grayscaleImage(id){
+    const data = JSON.stringify({command: "blackwhite"});
+    const res = await fetch (`${BASE_URL}/photos/${id}`, {
       method: 'POST',
       body: data,
       headers: { 'Content-Type': 'application/json' }
@@ -77,9 +71,9 @@ class PixlyApi {
 
   //Transforms an image into a color version on the back end.
   //NOTE: not currently working.
-  static async colorizeImage(id) {
-    const data = JSON.stringify({ command: "colorize" });
-    const res = await fetch(`${BASE_URL}/photos/${id}`, {
+  static async colorizeImage(id){
+    const data = JSON.stringify({command: "colorize"});
+    const res = await fetch (`${BASE_URL}/photos/${id}`, {
       method: 'POST',
       body: data,
       headers: { 'Content-Type': 'application/json' }

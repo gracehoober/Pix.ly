@@ -1,4 +1,3 @@
-import "./AddPhotoForm.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,31 +7,16 @@ import { useNavigate } from "react-router-dom";
  * -uploadPhoto: function from parent
  *
  * State:
- *  -formData:{photo_file: .jpg file, photo_description: text}
+ *  -formData: a .jpg file
  *
  * App -> RoutesList -> AddPhotoForm
  */
 function AddPhotoForm({ uploadPhoto }) {
-  const [formData, setFormData] = useState(
-    { photoFile: "", photo_description: "" }
-  );
+  const [formData, setFormData] = useState(null);
   const navigate = useNavigate();
 
   function handleChange(evt) {
-    let fieldName = evt.target.name;
-    let description = evt.target.text;
-    let photo = evt.target.file;
-
-    // TODO: refactor setFormData
-    setFormData(currData => {
-      if(description){
-        currData[fieldName] = description;
-      }
-      if(photo){
-        currData[fieldName] = photo;
-      }
-      return {...currData}
-    });
+    setFormData(evt.target.files[0]);
   }
 
   async function handleSubmit(evt) {
@@ -62,15 +46,6 @@ function AddPhotoForm({ uploadPhoto }) {
         required
       >
       </input>
-      <label htmlFor="photo_description"></label>
-      <input
-        id="photoDescription"
-        name="photoDescription"
-        type="text"
-        placeholder="Your photo description here..."
-        value={formData}
-        onChange={handleChange}
-      ></input>
       <button className="AddPhotoForm-submit-btn">Submit Photo</button>
     </form>
   );
